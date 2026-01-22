@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es-col">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 2</title>
+  </head>
+  <body>
+    <!-- a. Estructura HTML básica (Punto 1 y 2) -->
+    <h1>Gestor de Tareas</h1>
+
+    <input type="text" id="input-tarea" />
+    <button id="btn-agregar">Agregar Tarea</button>
+
+    <ul id="lista-tareas"></ul>
+
+    <script>
+      // c. Implementar programación orientada a objetos (POO)
+
+      // 1. Clase Tarea
+      // "Define una clase llamada Tarea. constructor con nombre y estado"
+      class Tarea {
+        constructor(nombre, completa = false) {
+          this.nombre = nombre;
+          this.completa = completa;
+          this.id = Date.now(); // Identificador unico necesario para saber cual borrar
+        }
+
+        // Implementa mtodos para actualizar estado y editar contenido
+        toggleEstado() {
+          this.completa = !this.completa;
+        }
+
+        editarNombre(nuevoNombre) {
+          this.nombre = nuevoNombre;
+        }
+      }
+
+      // 2. Clase GestorDeTareas
+      // Manteen una lista de todas las tareas. gestione almacenamiento y operaciones
+      class GestorDeTareas {
+        constructor() {
+          this.tareas = [];
+          this.cargarDeLocalStorage(); // g. Desafio adicional (LocalStorage)
+        }
+
+        agregarTarea(nombre) {
+          // f. Validación de entrada vacia
+          if (nombre === "") {
+            alert("Escribe algo en la tarea");
+            return;
+          }
+
+          const nuevaTarea = new Tarea(nombre);
+          this.tareas.push(nuevaTarea);
+          this.actualizar();
+        }
+
+        eliminarTarea(id) {
+          // Filtramos para quitar la tarea que coincida con el id
+          this.tareas = this.tareas.filter((t) => t.id !== id);
+          this.actualizar();
+        }
+
+        editarTarea(id) {
+          const tareaEncontrada = this.tareas.find((t) => t.id === id);
+          if (tareaEncontrada) {
+            const nuevoTexto = prompt("Nuevo nombre:", tareaEncontrada.nombre);
+            if (nuevoTexto) {
+              tareaEncontrada.editarNombre(nuevoTexto);
+              this.actualizar();
+            }
+          }
+        }
+
+        cambiarEstado(id) {
+          const tareaEncontrada = this.tareas.find((t) => t.id === id);
+          if (tareaEncontrada) {
+            tareaEncontrada.toggleEstado();
+            this.actualizar();
+          }
+        }
+
+        // Funcion auxiliar para Guardar y Renderizar al mismo tiempo
+        actualizar() {
+          localStorage.setItem("misTareas", JSON.stringify(this.tareas));
+          this.render();
+        }
+
+        cargarDeLocalStorage() {
+          const datos = localStorage.getItem("misTareas");
+          if (datos) {
+            const listaSimple = JSON.parse(datos);
+            // Reconvertimos los objetos simples a objetos clase Tarea
+            // Esto es necesario para que funcionen los métodos toggleEstado y editarNombre
+            this.tareas = listaSimple.map((item) => {
+              const t = new Tarea(item.nombre, item.completa);
+              t.id = item.id; // Recuperamos el mismo ID
+              return t;
+            });
+            this.render();
+          }
+        }
+
+        render() {
+          const ul = document.getElementById("lista-tareas");
+          ul.innerHTML = ""; // Limpiar lista
+
+          // b. Uso de ES6+ (forEach, template literals, const)
+          this.tareas.forEach((tarea) => {
+            const li = document.createElement("li");
+
+            // Texto simple para mostrar estado
+            const textoEstado = tarea.completa ? "(Completada)" : "(Pendiente)";
+
+            // HTML interno de cada tarea
+            li.innerHTML = `
+                        <span>${tarea.nombre} ${textoEstado}</span>
+                        <button onclick="gestor.cambiarEstado(${tarea.id})">Estado</button>
+                        <button onclick="gestor.editarTarea(${tarea.id})">Editar</button>
+                        <button onclick="gestor.eliminarTarea(${tarea.id})">Eliminar</button>
+                    `;
+
+            ul.appendChild(li);
+          });
+        }
+      }
+
+      // Inicialización
+      const gestor = new GestorDeTareas();
+
+      // c. Manipulación del DOM (Evento Click)
+      const boton = document.getElementById("btn-agregar");
+      boton.addEventListener("click", () => {
+        const input = document.getElementById("input-tarea");
+        gestor.agregarTarea(input.value);
+        input.value = ""; // Limpiar input
+      });
+    </script>
+  </body>
+</html>
