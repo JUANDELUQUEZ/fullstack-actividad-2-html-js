@@ -66,5 +66,5 @@ El proyecto se centra en:
 
 > No se requiere instalación de servidores ni entornos como Node.js.
 
--
+- [https://juandeluquez.github.io/fullstack-actividad-2-html-js/]
 
