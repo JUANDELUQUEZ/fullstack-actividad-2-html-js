@@ -1,53 +1,70 @@
-Gestor de Tareas - Actividad 2
+# Gestor de Tareas - Actividad 2 
 
-Aplicación interactiva de gestión de tareas desarrollada con JavaScript puro (Vanilla JS), implementando características modernas de ES6+ y Programación Orientada a Objetos (POO).
+Aplicación interactiva de gestión de tareas desarrollada con **JavaScript puro (Vanilla JS)**, implementando características modernas de **ES6+** y **Programación Orientada a Objetos (POO)**.
 
-Descripción del Proyecto
+---
 
-Este repositorio contiene la solución a la Actividad 2, cuyo objetivo es desarrollar una aplicación web que permita gestionar una lista de pendientes. El proyecto se centra en la manipulación del DOM, la lógica estructurada mediante clases (class) y la persistencia de datos en el navegador.
+## Descripción del Proyecto
 
-Funcionalidades Principales
+Este repositorio contiene la solución a la **Actividad 2**, cuyo objetivo es desarrollar una aplicación web que permita gestionar una lista de pendientes.
 
-Gestión de Tareas:
+El proyecto se centra en:
 
-Agregar nuevas tareas (con validación de campos vacíos).
+- Manipulación del DOM  
+- Lógica estructurada mediante clases (`class`)  
+- Persistencia de datos en el navegador  
 
-Editar el nombre de las tareas existentes.
+---
 
-Eliminar tareas de la lista.
+## Funcionalidades Principales
 
-Marcar tareas como completadas o pendientes.
+### Gestión de Tareas
 
-Persistencia de Datos: Implementación de localStorage para guardar las tareas automáticamente, evitando la pérdida de información al recargar la página.
+- Agregar nuevas tareas (con validación de campos vacíos).  
+- Editar el nombre de las tareas existentes.  
+- Eliminar tareas de la lista.  
+- Marcar tareas como completadas o pendientes.  
 
-Interfaz: Estructura HTML funcional y limpia (sin dependencias de CSS externo para la lógica).
+### Persistencia de Datos
 
-Tecnologías Aplicadas
+- Implementación de **localStorage** para guardar las tareas automáticamente.  
+- Evita la pérdida de información al recargar la página.  
 
-HTML5: Estructura semántica de la aplicación.
+### Interfaz
 
-JavaScript (ES6+):
+- Estructura HTML funcional y limpia.  
+- Sin dependencias externas de CSS para la lógica de la aplicación.  
 
-POO: Uso de clases Tarea y GestorDeTareas para encapsular la lógica.
+---
 
-Sintaxis Moderna: Uso de const, let, arrow functions y template literals.
+## Tecnologías Aplicadas
 
-DOM API: Manipulación directa de elementos HTML sin frameworks.
+### HTML5
+- Estructura semántica de la aplicación.  
 
-JSON: Serialización de datos para almacenamiento local.
+### JavaScript (ES6+)
 
-Instrucciones de Ejecución
+- **POO:** Uso de clases `Tarea` y `GestorDeTareas` para encapsular la lógica.  
+- **Sintaxis moderna:**  
+  - `const` y `let`  
+  - Arrow functions  
+  - Template literals  
+- **DOM API:** Manipulación directa de elementos HTML sin frameworks.  
+- **JSON:** Serialización de datos para almacenamiento local.  
 
-Clona este repositorio o descarga el archivo ZIP.
+---
 
-Ubica el archivo index.html.
+## Instrucciones de Ejecución
 
-Abre el archivo directamente en cualquier navegador web moderno (Chrome, Firefox, Edge, Safari). No se requiere instalación de servidores ni entornos como Node.js.
+1. Clona este repositorio o descarga el archivo ZIP.  
+2. Ubica el archivo `index.html`.  
+3. Abre el archivo directamente en cualquier navegador web moderno:  
+   - Chrome  
+   - Firefox  
+   - Edge  
+   - Safari  
 
-Estructura de Archivos
+> No se requiere instalación de servidores ni entornos como Node.js.
 
-index.html: Archivo principal que contiene la estructura visual y la lógica JavaScript (embebida en etiquetas <script> para facilitar la portabilidad del entregable).
+-
 
-Autor
-
-Este proyecto fue desarrollado como parte de la evaluación académica de la materia.
